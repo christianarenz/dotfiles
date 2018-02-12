@@ -5,10 +5,10 @@ echo 'start osx/set-defaults.sh'
 sudo -v
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Jonas MBP"
-sudo scutil --set HostName "jonas-mbp"
-sudo scutil --set LocalHostName "JonasMBP"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "jonas-mbp"
+sudo scutil --set ComputerName "Christians MBP"
+sudo scutil --set HostName "christians-mbp"
+sudo scutil --set LocalHostName "ChristiansMBP"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "christians-mbp"
 sudo dscacheutil -flushcache
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
