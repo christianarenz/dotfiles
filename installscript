@@ -185,7 +185,6 @@ brew cask install google-chrome
 brew cask install firefox
 brew cask install opera
 brew cask install mamp
-brew cask install google-nik-collection
 brew cask install alfred
 brew cask install bartender
 brew cask install iterm2
@@ -201,7 +200,6 @@ brew cask install transmit
 brew cask install teamviewer
 brew cask install moom
 brew cask install querious
-brew cask install sequel-pro
 brew cask install spotify
 brew cask install postman
 brew cask install poedit
@@ -209,13 +207,10 @@ brew cask install xmind
 brew cask install vlc
 brew cask install whatsapp
 brew cask install screaming-frog-seo-spider
-brew cask install jbidwatcher
-brew cask install jdownloader
 brew cask install evernote
 brew cask install docker-edge
 brew cask install adobe-creative-cloud
 brew cask install docker-toolbox
-brew cask install calibre
 brew cask install colorsnapper
 
 echo '++++++++++++++++++++++++++++++'
