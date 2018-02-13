@@ -1,6 +1,7 @@
 # Defaults
 alias np="source ~/.zshrc"
 alias dotfiles="subl ~/.dotfiles"
+alias profile="subl ~/.dotfiles/shell/.zshrc"
 alias hosts="subl /etc/hosts"
 alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo 'Copied to clipboard.'"
 alias ..='cd ..'
@@ -18,6 +19,12 @@ alias wget="curl -O"
 alias h="cd ~/"
 alias s="cd ~/Sites/"
 alias update="brew upgrade && sudo npm i -g npm && sudo npm update -g && composer global update"
+
+# Deployement
+alias deploy_twintlive="envoy run deploy_assets --env=live && envoy run deploy_live --env=live"
+alias deploy_twintstaging="envoy run deploy_assets --env=staging && envoy run deploy_staging --env=staging"
+alias deploy_m2slive="cd ~/Sites/Websites/mindtwo-systems && envoy run deploy --env=live && gulp --production"
+alias deploy_m2sstaging="cd ~/Sites/Websites/mindtwo-systems && envoy run deploy --env=staging && gulp --production"
 
 # NPM, Composer & Laravel
 alias n_w='npm run watch'
@@ -43,6 +50,7 @@ alias art_cc='[ -f vessel ] && ./vessel artisan cache:clear || php artisan cache
 alias acc='art_cc'
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias vm="homestead up && homestead ssh"
+alias e_l='envoy run list'
 
 # Magento
 alias mg='php -d memory_limit=-1 magento'
