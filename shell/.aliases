@@ -20,12 +20,6 @@ alias h="cd ~/"
 alias s="cd ~/Sites/"
 alias update="brew upgrade && sudo npm i -g npm && sudo npm update -g && composer global update"
 
-# Deployement
-alias deploy_twintlive="envoy run deploy_assets --env=live && envoy run deploy_live --env=live"
-alias deploy_twintstaging="envoy run deploy_assets --env=staging && envoy run deploy_staging --env=staging"
-alias deploy_m2slive="cd ~/Sites/Websites/mindtwo-systems && envoy run deploy --env=live && gulp --production"
-alias deploy_m2sstaging="cd ~/Sites/Websites/mindtwo-systems && envoy run deploy --env=staging && gulp --production"
-
 # NPM, Composer & Laravel
 alias el='envoy run list'
 alias nw='npm run watch'

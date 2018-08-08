@@ -1,6 +1,8 @@
 # Dev bin path
 export PATH=~/.dotfiles/bin:$PATH:~/.composer/vendor/bin:~/.npm-packages:~/.bin
 
+export COMPOSER_MEMORY_LIMIT=-1
+
 # Make vim the default editor
 export EDITOR="subl -w"
 
