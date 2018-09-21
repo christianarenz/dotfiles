@@ -20,6 +20,10 @@ alias h="cd ~/"
 alias s="cd ~/Sites/"
 alias update="brew upgrade && sudo npm i -g npm && sudo npm update -g && composer global update"
 
+# PHP Storm Projects
+alias pstorm="open -a PhpStorm"
+alias pstorm_twint="open -a PhpStorm ~/Sites/twint.local"
+
 # NPM, Composer & Laravel
 alias el='envoy run list'
 alias nw='npm run watch'
