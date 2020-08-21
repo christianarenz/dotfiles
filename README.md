@@ -1,4 +1,4 @@
-# Jonas dotfiles
+# Christian's dotfiles
 
 My personal dotfiles. Also used by some other geeks at [mindtwo.de](https://www.mindtwo.de) 
 
@@ -10,4 +10,5 @@ The bootstrap script can be run be cd-ing into the .dotfiles directory and perfo
 ```
 
 ## Thanks to for inspiration…
+[jonasemde](https://github.com/jonasemde/dotfiles)
 [freekmurze](https://github.com/freekmurze/dotfiles)

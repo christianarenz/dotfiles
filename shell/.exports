@@ -1,7 +1,15 @@
 # Dev bin path
-export PATH=~/.dotfiles/bin:$PATH:~/.composer/vendor/bin:~/.npm-packages:~/.bin
+export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH=/usr/local/opt/ncurses/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=~/.composer/vendor/bin:$PATH
+export PATH=~/.dotfiles/bin:$PATH
+export PATH=./node_modules/.bin/:$PATH
+export PATH=./vendor/bin:$PATH
 
-export COMPOSER_MEMORY_LIMIT=-1
+# Ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Make vim the default editor
 export EDITOR="subl -w"
@@ -26,3 +34,10 @@ export MANPAGER="less -X"
 
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto"
+
+# Cask folder
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# For compilers to find ncurses you may need to set
+export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+export CPPFLAGS="-I/usr/local/opt/ncurses/include"

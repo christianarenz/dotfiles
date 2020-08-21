@@ -1,44 +1,60 @@
 # Defaults
 alias np="source ~/.zshrc"
 alias dotfiles="subl ~/.dotfiles"
-alias profile="subl ~/.dotfiles/shell/.zshrc"
+alias .="dotfiles"
+alias .dotfiles="dotfiles"
 alias hosts="subl /etc/hosts"
 alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo 'Copied to clipboard.'"
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
 alias fresh='clear; echo -e "\033c\e[3J" && source ~/.zshrc'
 alias c='fresh'
 alias f='fresh'
 alias ls='ls -laF'
 alias l="ls -laF"
-alias find="grep '|'' ./* -R"
+alias g="grep '|'' ./* -R"
 alias wget="curl -O"
 alias h="cd ~/"
 alias s="cd ~/Sites/"
-alias update="brew upgrade && sudo npm i -g npm && sudo npm update -g && composer global update"
+alias update="brew upgrade && brew cask upgrade && sudo npm update -g && npm install -g npm && composer global update"
+alias p="phpunit"
+alias pf="phpunit --filter "
+alias pw="phpunit-watcher watch"
+alias pwf="phpunit-watcher watch --filter "
 
-# PHP Storm Projects
-alias pstorm="open -a PhpStorm"
-alias pstorm_twint="open -a PhpStorm ~/Sites/twint.local"
+# Tool replacements
+alias p1='ping -c1'
+
+# PHP
+alias uphp71='ln -sfn ~/.dotfiles/bin/php71 ~/.dotfiles/bin/php && clear; echo -e "\033c\e[3J" && source ~/.zshrc'
+alias sphp71='uphp71'
+alias uphp72='ln -sfn ~/.dotfiles/bin/php72 ~/.dotfiles/bin/php && clear; echo -e "\033c\e[3J" && source ~/.zshrc'
+alias sphp72='uphp72'
+alias uphp73='ln -sfn ~/.dotfiles/bin/php73 ~/.dotfiles/bin/php && clear; echo -e "\033c\e[3J" && source ~/.zshrc'
+alias sphp73='uphp73'
+alias uphp74='ln -sfn ~/.dotfiles/bin/php74 ~/.dotfiles/bin/php && clear; echo -e "\033c\e[3J" && source ~/.zshrc'
+alias sphp74='uphp74'
+alias uphp75='ln -sfn ~/.dotfiles/bin/php75 ~/.dotfiles/bin/php && clear; echo -e "\033c\e[3J" && source ~/.zshrc'
+alias sphp75='uphp75'
 
 # NPM, Composer & Laravel
+alias lu='lucid'
 alias el='envoy run list'
 alias nw='npm run watch'
 alias np='npm run production'
 alias nd='npm run dev'
 alias cu='[ -f vessel ] && ./vessel composer update || composer update'
 alias ci='[ -f vessel ] && ./vessel composer install || composer install'
-alias cda='[ -f vessel ] && ./vessel composer dump-autoload || composer dump-autoload'
+alias cda='[ -f vessel ] && ./vessel composer dump-autoload -o || composer dump-autoload -o'
 alias ccc='[ -f vessel ] && ./vessel composer clear-cache || composer clear-cache'
 alias cgu='[ -f vessel ] && ./vessel composer global update || composer global update'
 alias amf='[ -f vessel ] && ./vessel artisan migrate:fresh || php artisan migrate:fresh'
 alias amfs='[ -f vessel ] && ./vessel artisan migrate:fresh --seed || php artisan migrate:fresh --seed'
 alias amr='[ -f vessel ] && ./vessel artisan migrate:refresh || php artisan migrate:refresh'
 alias amrs='[ -f vessel ] && ./vessel artisan migrate:refresh --seed || php artisan migrate:refresh --seed'
+alias ac='acc && avc && aconfig-clear'
 alias acc='[ -f vessel ] && ./vessel artisan cache:clear || php artisan cache:clear'
+alias avc='[ -f vessel ] && ./vessel artisan view:clear || php artisan view:clear'
+alias aconfig-clear='[ -f vessel ] && ./vessel artisan config:clear || php artisan config:clear'
+alias arl='[ -f vessel ] && ./vessel artisan route:list || php artisan route:list'
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias vm="homestead up && homestead ssh"
 alias a='function __artisan() { [ -f vessel ] && ./vessel artisan "$@" || php artisan "$@" }; __artisan'
@@ -48,20 +64,20 @@ alias y='function __yarn() { [ -f vessel ] && ./vessel yarn "$@" || yarn "$@" };
 alias v='function __vessel() { ./vessel yarn "$@" }; __vessel'
 
 # Magento
-alias m='php -d memory_limit=-1 magento'
-alias mce='php -d memory_limit=-1 magento cache:enable'
-alias mcd='php -d memory_limit=-1 magento cache:disable config layout block_html full_page'
-alias mthe='php -d memory_limit=-1 magento dev:template-hints:enable && mcc'
-alias mthd='php -d memory_limit=-1 magento dev:template-hints:disable && mcc'
-alias mcc='php -d memory_limit=-1 magento cache:clean config layout block_html full_page'
-alias mcf='php -d memory_limit=-1 magento cache:flush config layout block_html full_page'
-alias mss='rm -Rf ./pub/static/frontend && php -d memory_limit=-1 magento setup:static-content:deploy de_DE -f && mcc'
+alias m='php71 -d memory_limit=-1 magento'
+alias mce='php71 -d memory_limit=-1 magento cache:enable'
+alias mcd='php71 -d memory_limit=-1 magento cache:disable config layout block_html full_page'
+alias mthe='php71 -d memory_limit=-1 magento dev:template-hints:enable && mcc'
+alias mthd='php71 -d memory_limit=-1 magento dev:template-hints:disable && mcc'
+alias mcc='php71 -d memory_limit=-1 magento cache:clean config layout block_html full_page'
+alias mcf='php71 -d memory_limit=-1 magento cache:flush config layout block_html full_page'
+alias mss='rm -Rf ./pub/static/frontend && php71 -d memory_limit=-1 magento setup:static-content:deploy de_DE -f && mcc'
 
 # Docker
 alias dstart='[ -f vessel ] && ./vessel start || docker-compose start'
 alias dstop='[ -f vessel ] && ./vessel stop || docker-compose stop'
 alias dbuild='docker-compose build'
-alias dup='[ -f vessel ] && ./vessel start || docker-compose up'
+alias dup='[ -f vessel ] && (./vessel stop && ./vessel start) || (docker-compose stop && docker-compose up)'
 alias drm='docker rm $(docker ps -aq)'
 alias drmi='docker rmi $(docker images -q)'
 
@@ -69,7 +85,10 @@ alias drmi='docker rmi $(docker images -q)'
 alias vinit='[ ! -f vessel ] && (composer require shipping-docker/vessel && php artisan vendor:publish --provider="Vessel\VesselServiceProvider" && bash vessel init)'
 
 # git
+alias nah='git reset --hard;git clean -df'
+alias gc="git checkout"
 alias gpo="git push origin"
+alias gm="git merge"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # Fast open
