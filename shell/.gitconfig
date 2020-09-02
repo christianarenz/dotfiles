@@ -6,7 +6,7 @@
 	ui = true
 [core]
 	editor = subl
-	excludesfile = ~/.global-gitignore
+	excludesfile = /Users/christianarenz/.global-gitignore
 	ignorecase = false
 [diff]
 	tool = diffmerge

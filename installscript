@@ -45,8 +45,8 @@ echo 'Install composer'
 echo '----------------'
 cd ~/.dotfiles
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php --quiet
+php -r "if (hash_file('sha384', 'composer-setup.php') === '8a6138e2a05a8c28539c9f0fb361159823655d7ad2deecb371b04a83966c61223adc522b0189079e3e9e277cd72b8897') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
 php -r "unlink('composer-setup.php');"
 echo 'move composer to /usr/local/bin/composer'
 mv -f composer.phar /usr/local/bin/composer
@@ -78,9 +78,9 @@ brew install httpie
 
 echo 'install brew-cask'
 echo '------------------'
-brew tap caskroom/cask
-brew install brew-cask
-brew tap caskroom/versions
+brew tap homebrew/cask
+brew install cask
+brew tap homebrew/cask-versions
 
 echo 'install httrack'
 echo '-------------'
@@ -100,23 +100,11 @@ brew install ack
 
 echo 'Install node'
 echo '-----------'
-brew install node@8
+brew install node@12
 
 echo 'Install zsh-autosuggestions'
 echo '---------------------------'
 brew install zsh-autosuggestions
-
-echo 'add composer config'
-echo '---------------------'
-php composer.phar config repositories.license "proprietary"
-php composer.phar config repositories.prefer-stable "true"
-php composer.phar config repositories.minimum-stability "dev"
-php composer.phar config repositories.description "Global composer packages"
-php composer.phar config repositories.name "mindtwo/jonas-global-packages"
-php composer.phar config repositories.typo3-mindtwo-installer '{"type": "path", "url": "~/Sites/_packagist/typo3-mindtwo-installer"}'
-php composer.phar config repositories.typo3-mindtwo-installer '{"type": "path", "url": "~/Sites/_packagist/typo3-mindtwo-installer"}'
-php composer.phar config repositories.wordpress-mindtwo-installer '{"type": "path", "url": "~/Sites/_packagist/wordpress-mindtwo-installer"}'
-php composer.phar config repositories.authors '{"name": "mindtwo GmbH","email": "info@mindtwo.de","homepage": "https://www.mindtwo.de/","role": "Developer"}'
 
 echo 'install laravel envoy'
 echo '---------------------'
@@ -125,10 +113,6 @@ composer global require "laravel/envoy=dev-master";
 echo 'install php-cs-fixer'
 echo '--------------------'
 composer global require "friendsofphp/php-cs-fixer";
-
-echo 'install laravel installer'
-echo '--------------------'
-composer global require "laravel/installer";
 
 echo 'install laravel installer'
 echo '--------------------'
@@ -188,7 +172,7 @@ npm install -g svgo
 
 echo 'install system apps'
 echo '------------'
-brew cask install --force 1password craftmanagergitify iterm2 moom spotify vlc a-better-finder-rename dashgoogle-adwords-editor java8 phpstorm sublime-text-dev whatsapp adobe-creative-cloud diffmergegoogle-chrome poedit tableplus wondershare-video-converter-ultimate alfred dockergoogle-drive-file-stream postman teamviewer xmind anydesk dropboxgoogle-hangouts kodi querious the-unarchiver zeplin balenaetcher dynamitegoogle-nik-collection lingo screaming-frog-seo-spider tor-browser bartender evernotegoogle-web-designer macdown sequel-pro tower calibre firefoxgrammarly mamp sketch transmit cleanmymac flowsynciconjar meta skype vagrant coda fontbaseimageoptim microsoft-office skype-for-business virtualbox colorsnapper githubinvisionsync moneymoney slack visual-studio-code
+brew cask install --force moom spotify vlc a-better-finder-rename phpstorm sublime-text-dev whatsapp adobe-creative-cloud diffmerge poedit alfred docker google-drive-file-stream postman teamviewer xmind anydesk dropbox google-hangouts querious the-unarchiver zeplin screaming-frog-seo-spider bartender evernote google-web-designer tower firefox mamp sketch transmit cleanmymac iconjar skype vagrant coda fontbase imageoptim microsoft-office skype-for-business virtualbox colorsnapper invisionsync moneymoney slack visual-studio-code
 
 
 echo '++++++++++++++++++++++++++++++'
