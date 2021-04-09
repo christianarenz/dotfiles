@@ -3,6 +3,7 @@ alias np="source ~/.zshrc"
 alias dotfiles="subl ~/.dotfiles"
 alias .="dotfiles"
 alias .dotfiles="dotfiles"
+alias profile="subl ~/.zshrc"
 alias hosts="subl /etc/hosts"
 alias sshkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo 'Copied to clipboard.'"
 alias fresh='clear; echo -e "\033c\e[3J" && source ~/.zshrc'

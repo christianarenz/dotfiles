@@ -76,6 +76,10 @@ echo 'install httpie'
 echo '------------'
 brew install httpie
 
+echo 'install mailhog'
+echo '------------'
+brew install mailhog
+
 echo 'install brew-cask'
 echo '------------------'
 brew tap homebrew/cask
