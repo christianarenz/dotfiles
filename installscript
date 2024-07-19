@@ -51,12 +51,6 @@ echo 'install wget'
 echo '------------'
 brew install wget --overwrite
 
-echo 'install brew-cask'
-echo '------------------'
-brew tap homebrew/cask
-brew install cask
-brew tap homebrew/cask-versions
-
 echo 'install z'
 echo '-------------'
 brew install z
@@ -64,10 +58,6 @@ brew install z
 #activate z
 cd ~/.dotfiles/shell
 chmod +x z.sh
-
-echo 'Install ack'
-echo '-----------'
-brew install ack
 
 echo 'Install zsh-autosuggestions'
 echo '---------------------------'
@@ -77,34 +67,9 @@ echo 'install laravel envoy'
 echo '---------------------'
 composer global require "laravel/envoy=dev-master";
 
-echo 'install php-cs-fixer'
-echo '--------------------'
-composer global require "friendsofphp/php-cs-fixer";
-
 echo 'install laravel installer'
 echo '--------------------'
 composer global require "laravel/installer";
-
-echo 'install lumen installer'
-echo '--------------------'
-composer global require "laravel/lumen-installer";
-
-echo 'install typo3-mindtwo-installer'
-echo '--------------------'
-composer global require "mindtwo/typo3-mindtwo-installer=@dev";
-
-echo 'install wordpress-mindtwo-installer'
-echo '--------------------'
-composer global require "mindtwo/wordpress-mindtwo-installer=@dev";
-
-echo 'install yarn'
-echo '------------'
-brew install yarn
-
-echo 'install system apps'
-echo '------------'
-brew cask install --force moom spotify vlc a-better-finder-rename phpstorm sublime-text-dev whatsapp adobe-creative-cloud diffmerge poedit alfred docker google-drive-file-stream postman teamviewer xmind anydesk dropbox google-hangouts querious the-unarchiver zeplin screaming-frog-seo-spider bartender evernote google-web-designer tower firefox mamp sketch transmit cleanmymac iconjar skype vagrant coda fontbase imageoptim microsoft-office skype-for-business virtualbox colorsnapper invisionsync moneymoney slack visual-studio-code
-
 
 echo '++++++++++++++++++++++++++++++'
 echo '++++++++++++++++++++++++++++++'
