@@ -1,0 +1,124 @@
+#!/bin/bash
+#
+# Install dotfiles
+
+set -e  # Exit on error (but we use || true for optional steps)
+
+# Colors
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+step() { echo ""; echo -e "${BLUE}➜${NC} $1"; }
+success() { echo -e "${GREEN}✓${NC} $1"; }
+warn() { echo -e "${YELLOW}⚠${NC} $1"; }
+error() { echo -e "${RED}✗${NC} $1"; exit 1; }
+
+echo ""
+step "Install Dotfiles"
+echo ""
+warn "This will install/update your terminal setup"
+echo ""
+read -p "Continue? (y/n) " -n 1 -r
+echo ""
+
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo ""
+    step "Cancelled"
+    echo ""
+    exit 0
+fi
+
+echo ""
+sudo -v
+
+# Start
+touch ~/.hushlogin
+step "Installing Oh My Zsh"
+if [ ! -d ~/.oh-my-zsh ]; then
+    rm -rf ~/.oh-my-zsh
+    curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended || warn "Oh My Zsh installation failed"
+fi
+success "Oh My Zsh installed"
+
+# Set zsh as default shell
+step "Setting Zsh as default shell"
+ZSH_PATH=$(which zsh)
+if ! grep -q "$ZSH_PATH" /etc/shells; then
+    echo "Adding $ZSH_PATH to /etc/shells. You might be asked for your password."
+    sudo sh -c "echo $ZSH_PATH >> /etc/shells"
+fi
+if [ "$SHELL" != "$ZSH_PATH" ]; then
+    chsh -s "$ZSH_PATH"
+fi
+success "Zsh configured as default shell"
+
+# Git configuration
+step "Configuring Git"
+ln -sf ~/.dotfiles/home/.gitconfig ~/.gitconfig
+ln -sf ~/.dotfiles/home/.global-gitignore ~/.global-gitignore
+git config --global core.excludesfile ~/.global-gitignore
+success "Git configured"
+
+# Symlinks
+step "Creating symlinks"
+# Backup existing config files
+BACKUP_DIR=~/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)
+for file in ~/.zshrc ~/.vimrc ~/.vim ~/.bash_profile ~/.profile; do
+    if [ -e "$file" ] && [ ! -L "$file" ]; then
+        mkdir -p "$BACKUP_DIR"
+        cp -r "$file" "$BACKUP_DIR/"
+        echo "Backed up $(basename $file) to $BACKUP_DIR"
+    fi
+done
+rm -f ~/.zshrc ~/.vimrc ~/.vim ~/.bash_profile ~/.profile
+ln -sf ~/.dotfiles/home/.zshrc ~/.zshrc
+ln -sf ~/.dotfiles/home/.vimrc ~/.vimrc
+ln -sf ~/.dotfiles/home/.vim ~/.vim
+ln -sf ~/.dotfiles/home/.bash_profile ~/.bash_profile
+ln -sf ~/.dotfiles/home/.profile ~/.profile
+success "Symlinks created"
+
+# NPM setup
+step "Configuring npm"
+mkdir -p ~/.npm-packages
+npm config set prefix ~/.npm-packages || warn "npm config failed"
+success "npm configured"
+
+# Homebrew
+step "Installing Homebrew"
+if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+success "Homebrew installed"
+
+# Install all packages from Brewfile
+step "Installing packages from Brewfile"
+brew bundle --file=~/.dotfiles/config/Brewfile || warn "Some packages failed (likely already installed)"
+success "Brewfile processed"
+
+# Global npm packages
+step "Installing global npm packages"
+npm install -g svgo || warn "svgo already installed or failed"
+success "npm packages processed"
+
+# Start services
+step "Starting services"
+brew services start mysql || warn "mysql already running or not installed"
+success "Services processed"
+
+# Done
+echo ""
+success "Installation complete!"
+echo ""
+step "Next steps:"
+echo "  • Configure iTerm2: Set font to 'MesloLGM Nerd Font Mono' and enable Powerline glyphs"
+echo "  • Restart terminal or run: exec zsh"
+echo ""
+echo "Optional:"
+echo "  • Customize aliases: ~/.dotfiles-custom/shell/.aliases"
+echo ""

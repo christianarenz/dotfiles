@@ -1,0 +1,138 @@
+# Dotfiles Brewfile
+# Install with: brew bundle --file=~/.dotfiles/config/Brewfile
+# Generate from installed: brew bundle dump --force --file=~/.dotfiles/config/Brewfile
+
+# =============================================================================
+# CORE DEVELOPMENT TOOLS
+# =============================================================================
+
+# Version Control
+brew "git"
+brew "git-delta"        # Better git diffs
+brew "git-lfs"          # Git Large File Storage
+brew "gh"               # GitHub CLI
+
+# Languages & Runtimes
+brew "node"
+brew "python@3.14"
+brew "go"
+
+# Package Managers & Build Tools
+brew "composer"
+brew "autoconf"
+brew "pkg-config"
+
+# Node Version Management
+brew "nvm"
+
+# =============================================================================
+# DATABASES & DATA STORES
+# =============================================================================
+
+brew "mysql"
+brew "mongodb-community"
+brew "mongodb-database-tools"
+brew "mongosh"
+brew "sqlite"
+
+# =============================================================================
+# DEVOPS & INFRASTRUCTURE
+# =============================================================================
+
+# Container & Orchestration
+brew "docker"
+brew "docker-completion"
+brew "kubernetes-cli"
+brew "k9s"              # Kubernetes TUI
+
+# Cloud & Infrastructure
+brew "awscli"           # AWS CLI
+brew "doctl"            # DigitalOcean CLI
+
+# Networking & Monitoring
+brew "dnsmasq"
+brew "nmap"
+
+# =============================================================================
+# MODERN CLI TOOLS (Rust rewrites & improvements)
+# =============================================================================
+
+brew "zoxide"           # Smarter cd (replaces z)
+brew "bat"              # Better cat with syntax highlighting
+brew "eza"              # Modern ls with icons
+brew "ripgrep"          # Faster grep
+brew "fd"               # Faster find
+brew "fzf"              # Fuzzy finder
+brew "bottom"           # Modern system monitor (htop alternative)
+brew "tree"             # Directory tree viewer
+brew "ncdu"             # NCurses Disk Usage
+
+# =============================================================================
+# FILE & DATA PROCESSING
+# =============================================================================
+
+brew "jq"               # JSON processor
+brew "yq"               # YAML processor
+brew "wget"
+brew "curl"
+brew "httpie"           # Better HTTP client
+brew "ack"              # Code search tool
+brew "fswatch"          # File change monitor
+brew "parallel"         # Execute jobs in parallel
+brew "mackup"           # Backup application settings
+
+# =============================================================================
+# MEDIA & IMAGE PROCESSING
+# =============================================================================
+
+brew "imagemagick"
+brew "ffmpeg"
+
+# =============================================================================
+# TEXT & MARKUP
+# =============================================================================
+
+brew "aspell"           # Spell checker
+brew "tidy-html5"       # HTML validator
+
+# =============================================================================
+# SECURITY & ENCRYPTION
+# =============================================================================
+
+brew "gnupg"
+brew "openssl@3"
+cask "1password-cli"
+
+# =============================================================================
+# UTILITIES & MISC
+# =============================================================================
+
+brew "direnv"           # Per-directory environment variables
+brew "httrack"          # Website copier
+brew "md5sha1sum"       # Hash utilities
+
+# =============================================================================
+# ZSH
+# =============================================================================
+
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+
+# =============================================================================
+# FONTS
+# =============================================================================
+
+cask "font-meslo-lg-nerd-font"
+
+# =============================================================================
+# GUI APPLICATIONS
+# =============================================================================
+
+cask "betterzip"        # Archive manager (includes QuickLook plugin)
+cask "suspicious-package"   # Inspect .pkg installers
+
+# =============================================================================
+# QUICKLOOK PLUGINS
+# =============================================================================
+
+cask "qlvideo"          # Video file previews
