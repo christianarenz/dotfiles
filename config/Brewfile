@@ -30,9 +30,9 @@ brew "nvm"
 # =============================================================================
 
 brew "mysql"
-brew "mongodb-community"
-brew "mongodb-database-tools"
-brew "mongosh"
+# brew "mongodb-community"  # Not available - use Docker or install manually
+# brew "mongodb-database-tools"
+# brew "mongosh"
 brew "sqlite"
 
 # =============================================================================
