@@ -1,0 +1,26 @@
+# Sensitive files
+.env
+.env.*
+*.key
+*.pem
+*.p12
+credentials.json
+secrets.yml
+
+# Custom local config (use ~/.dotfiles-custom for local overrides)
+*-custom/
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+.cache/
+
+# macOS
+.AppleDouble
+.LSOverride
+._*
