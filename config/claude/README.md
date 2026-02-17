@@ -26,41 +26,52 @@ ln -sf ~/.dotfiles/config/claude/settings.json ~/.claude/settings.json
 
 ## Browser Automation Setup
 
-This configuration includes Chrome DevTools MCP for browser automation.
+This configuration includes browser automation via agent-browser.
 
 ### Installation
 
 ```bash
-# 1. Install Chrome DevTools MCP Server
-claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest
-
-# 2. Install browser agent skill (optional)
-npx skills add -g agent-browser
+# Install agent-browser skill (uses 82% less context than Playwright)
+export PATH="/opt/homebrew/bin:$PATH" && npx skills add vercel-labs/agent-browser -g -y
 ```
 
 ### Usage
 
-Start Chrome with remote debugging:
+Once installed, Claude can automatically use the browser through the `/agent-browser` skill:
 
-```bash
-# Recommended: Separate profile for security
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --remote-debugging-port=9222 \
-  --user-data-dir=/tmp/chrome-debugging
+```
+Navigate to example.com and show me all the main navigation links
+```
 
-# Or use your main profile (Claude has access to all logins!)
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --remote-debugging-port=9222
+Or use it explicitly:
+
+```
+/agent-browser open https://example.com
+/agent-browser snapshot -i
 ```
 
 ### Capabilities
 
 Once configured, Claude can:
 - Navigate and interact with websites
-- Fill forms and click buttons
-- Execute authenticated actions (using your real cookies/sessions)
-- Inspect DOM and run JavaScript
-- Collect performance metrics
+- Fill forms and click buttons using element references (@e1, @e2)
+- Take screenshots and analyze page content
+- Extract data from web pages
+- No CSS selectors needed - uses accessibility tree
+
+### Advanced: Chrome DevTools MCP (Optional)
+
+For deeper browser control with real authentication:
+
+```bash
+# Install Chrome DevTools MCP Server
+claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest
+
+# Start Chrome with remote debugging
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --remote-debugging-port=9222 \
+  --user-data-dir=/tmp/chrome-debugging
+```
 
 ## Adding New Skills
 
