@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(agent-browser:*)",
+      "Bash(gh:*)",
+      "Bash(curl:*)",
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(php:*)",
+      "Bash(composer:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(make:*)",
+      "Bash(brew:*)",
+      "WebSearch",
+      "WebFetch",
+      "mcp__chrome-devtools__*"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enabledPlugins": {
+    "agent-browser@agent-browser": true
+  },
+  "alwaysThinkingEnabled": false
+}

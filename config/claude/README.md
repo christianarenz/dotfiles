@@ -21,7 +21,46 @@ mv ~/.claude ~/.claude_backup
 mkdir -p ~/.claude
 ln -sf ~/.dotfiles/config/claude/skills ~/.claude/skills
 ln -sf ~/.dotfiles/config/claude/agents ~/.claude/agents
+ln -sf ~/.dotfiles/config/claude/settings.json ~/.claude/settings.json
 ```
+
+## Browser Automation Setup
+
+This configuration includes Chrome DevTools MCP for browser automation.
+
+### Installation
+
+```bash
+# 1. Install Chrome DevTools MCP Server
+claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest
+
+# 2. Install browser agent skill (optional)
+npx skills add -g agent-browser
+```
+
+### Usage
+
+Start Chrome with remote debugging:
+
+```bash
+# Recommended: Separate profile for security
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --remote-debugging-port=9222 \
+  --user-data-dir=/tmp/chrome-debugging
+
+# Or use your main profile (Claude has access to all logins!)
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --remote-debugging-port=9222
+```
+
+### Capabilities
+
+Once configured, Claude can:
+- Navigate and interact with websites
+- Fill forms and click buttons
+- Execute authenticated actions (using your real cookies/sessions)
+- Inspect DOM and run JavaScript
+- Collect performance metrics
 
 ## Adding New Skills
 
