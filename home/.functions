@@ -77,7 +77,7 @@ function removehost() {
    ssh-keygen -R "$1"
 }
 
-function gh {
+function ghopen {
     remote=$(git config --get remote.origin.url)
     remote=${remote#"git@github.com:"}
     remote=${remote%".git"}
